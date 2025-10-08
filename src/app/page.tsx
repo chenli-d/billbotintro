@@ -1,103 +1,109 @@
+// src/app/page.tsx
+import Link from "next/link";
 import Image from "next/image";
+import { PROJECT_NAME, SUBTITLE, TAGLINE, TEAM } from "../../lib/constants/brand";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-white to-gray-50 dark:from-[#0D1117] dark:via-[#0D1117] dark:to-[#0B0F14]">
+      {/* 背景装饰 */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 right-[-10%] h-[42rem] w-[42rem] rounded-full bg-blue-200/40 blur-3xl dark:bg-blue-900/20"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[-10%] left-[-10%] h-[32rem] w-[32rem] rounded-full bg-cyan-200/40 blur-3xl dark:bg-cyan-900/20"
+      />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* 内容容器 */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-16 pb-24 text-center sm:pt-10">
+        {/* Logo */}
+        <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-lg dark:bg-[#111827]">
+          <Image
+            src="/Logo.png"
+            alt="BillBot"
+            width={64}
+            height={64}
+            className="opacity-90 rounded-lg"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Title + Subtitle */}
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-5xl dark:text-gray-100">
+          {PROJECT_NAME}
+        </h1>
+        <p className="mt-2 text-lg text-gray-600 sm:text-xl dark:text-gray-300">
+          {SUBTITLE}
+        </p>
+
+        {/* Tagline */}
+        <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-gray-700 dark:text-gray-300">
+          <span className="rounded-full bg-blue-50 px-3 py-1 text-blue-700 dark:bg-blue-950/40 dark:text-blue-300">
+            {TAGLINE}
+          </span>
+        </p>
+
+        {/* 卖点三条 */}
+        <div className="mx-auto mt-8 grid max-w-3xl gap-3 sm:grid-cols-3">
+          {[
+            "AI-First Intelligence — No OCR, No Limits, Just Understanding",
+            "Designed for Canada — Accurate, Localized, and Bilingual Ready",
+            "Scan Receipts Directly from Your Phone"
+          ].map((t) => (
+            <div
+              key={t}
+              className="rounded-xl border border-gray-200 bg-white p-3 text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-[#111827] dark:text-gray-300"
+            >
+              {t}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA 区块 */}
+        <div className="mt-6 flex justify-center">
+          <Link
+            href="/details"
+            className="inline-flex items-center justify-center rounded-lg bg-[#4285F4] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4285F4] dark:focus:ring-offset-0"
+          >
+            Explore Details
+            <svg
+              className="ml-2 h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* 团队区块 */}
+        <section
+          id="team"
+          className="mx-auto mt-12 max-w-xl border-t border-gray-200 pt-8 dark:border-gray-700"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            Team Members
+          </h2>
+          <ul className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+            {TEAM.map((m) => (
+              <li
+                key={m}
+                className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-gray-700 shadow-sm dark:border-gray-700 dark:bg-[#111827] dark:text-gray-300"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* 页脚 */}
+        <p className="mt-14 text-xs text-gray-500 dark:text-gray-400">
+          Sprint 1 Deliverable · Deployed on Vercel
+        </p>
+      </div>
+    </main>
   );
 }
